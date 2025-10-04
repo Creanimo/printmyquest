@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.6/dist/styles/webawesome.css"/>
+    <script type="module" src="app.esm.js"></script>
+    <title>Print My Quest</title>
+</head>
+<body>
+<template id="task-card">
+    <wa-card class="task-card" id="{{task_id}}">
+        <div slot="header" style="width: 100%;">
+            <div class="wa-split">
+                <div class="wa-cluster">
+                    <wa-button appearance="plain" variant="neutral"><wa-icon name="grip-vertical" label="Click to drag"></wa-icon></wa-button>
+                    <wa-tooltip for="my-button">This is a tooltip</wa-tooltip> <wa-button id="my-button">Hover Me</wa-button>
+                </div>
+                <div>
+                    <wa-button-group label="Alignment">
+                        <wa-button><wa-icon name="caret-up" label="Move Up"></wa-icon></wa-button>
+                        <wa-button><wa-icon name="caret-down" label="Move Down"></wa-icon></wa-button>
+                    </wa-button-group>
+                    <wa-button><wa-icon name="print" label="Print Single Task"></wa-icon></wa-button>
+                    <wa-dropdown>
+                        <wa-button slot="trigger" pill>
+                            <wa-icon label="Options" name="ellipsis"></wa-icon>
+                        </wa-button>
+                        <wa-dropdown-item>
+                            <wa-icon slot="icon" name="scissors"></wa-icon>
+                            Cut
+                        </wa-dropdown-item>
+                        <wa-dropdown-item>
+                            <wa-icon slot="icon" name="copy"></wa-icon>
+                            Copy
+                        </wa-dropdown-item>
+                        <wa-dropdown-item>
+                            <wa-icon slot="icon" name="paste"></wa-icon>
+                            Paste
+                        </wa-dropdown-item>
+                        <wa-divider></wa-divider>
+                        <wa-dropdown-item>
+                            Show images
+                            <wa-dropdown-item slot="submenu" value="show-all-images">Show All Images</wa-dropdown-item>
+                            <wa-dropdown-item slot="submenu" value="show-thumbnails">Show Thumbnails</wa-dropdown-item>
+                        </wa-dropdown-item>
+                        <wa-divider></wa-divider>
+                        <wa-dropdown-item type="checkbox" checked>Emoji Shortcuts</wa-dropdown-item>
+                        <wa-dropdown-item type="checkbox" checked>Word Wrap</wa-dropdown-item>
+                        <wa-divider></wa-divider>
+                        <wa-dropdown-item variant="danger">
+                            <wa-icon slot="icon" name="trash"></wa-icon>
+                            Delete
+                        </wa-dropdown-item>
+                    </wa-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="task-card__title">
+            <div class="task-card__title__view wa-cluster">
+                <wa-checkbox size="large">Mark as done</wa-checkbox>
+                <wa-button appearance="plain" variant="neutral">Task Title</wa-button>
+            </div>
+            <div class="task-card__title__edit">
+                <div class="wa-flank:end">
+                    <div><wa-input placeholder="Clearable" with-clear></wa-input></div>
+                    <wa-button variant="success" appearance="accent"><wa-icon name="check" label="Save"></wa-icon></wa-button>
+                </div>
+            </div>
+        </div>
+        <div class="task-card__description">
+            <div class="task-card__description__view">
+                <wa-button appearance="plain" variant="neutral">This is where a longer description for the task can be placed.</wa-button>
+            </div>
+            <div class="task-card__description__view">
+                <wa-textarea resize="auto"></wa-textarea>
+            </div>
+    </wa-card>
+</template>
+</body>
+</html>
