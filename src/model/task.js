@@ -38,6 +38,12 @@ export class Task {
     markedDone;
 
     /**
+     * Subtasks
+     * @type {Task[]}
+     */
+    subtasks;
+
+    /**
      * Creates a new Task instance.
      * @param {Object} params - Task properties
      * @param {string} params.id - Task unique id
@@ -45,13 +51,22 @@ export class Task {
      * @param {string} params.description - Task description
      * @param {string} params.iconName - Icon name
      * @param {Date|null} [params.markedDone=null] - Date marked done (or null)
+     * @param {Task[]} params.subtasks
      */
-    constructor({ id, title, description, iconName, markedDone = null }) {
+    constructor({
+                    id,
+                    title,
+                    description,
+                    iconName,
+                    markedDone = null,
+                    subtasks,
+    }) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.iconName = iconName;
         this.markedDone = markedDone;
+        this.subtasks = subtasks;
     }
 
     /**
@@ -105,5 +120,57 @@ export class Task {
      */
     withIconName(newIconName) {
         return this._withUpdate({ iconName: newIconName });
+    }
+
+    /**
+     * Updates the subtasks
+     * @param {Task[]} a new array of subtasks
+     * @returns {Task} New instance with updated icon
+     */
+    withSubtasks(subtasks) {
+        return this._withUpdate({ subtasks });
+    }
+
+    /**
+     * Adds a subtask (appends to subtasks).
+     * @param {Task} subtask The subtask instance to add
+     * @returns {Task} New instance with the subtask appended
+     */
+    addSubtask(subtask) {
+        return this._withUpdate({ subtasks: [...this.subtasks, subtask] });
+    }
+
+    /**
+     * Removes a subtask by its id.
+     * @param {string} subtaskId The id of the subtask to remove
+     * @returns {Task} New instance with the subtask removed
+     */
+    removeSubtask(subtaskId) {
+        return this._withUpdate({
+            subtasks: this.subtasks.filter(t => t.id !== subtaskId)
+        });
+    }
+
+    /**
+     * Updates a subtask by its id using an update function.
+     * @param {string} subtaskId Subtask id to update
+     * @param {(task: Task) => Task} updater Function taking Task, returning updated Task
+     * @returns {Task} New instance with updated subtask
+     */
+    updateSubtask(subtaskId, updater) {
+        return this._withUpdate({
+            subtasks: this.subtasks.map(
+                t => t.id === subtaskId ? updater(t) : t
+            )
+        });
+    }
+
+    /**
+     * Replace a subtask by its id.
+     * @param {Task} newSubtask The updated Task instance (must match id)
+     * @returns {Task} New instance with replaced subtask
+     */
+    replaceSubtask(newSubtask) {
+        return this.updateSubtask(newSubtask.id, () => newSubtask);
     }
 }
