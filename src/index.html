@@ -9,24 +9,39 @@
     <title>Print My Quest</title>
 </head>
 <body>
-
-<template id="task-card">
+<div class="task-grid">
+    <div class="task-column task-column--filled">
+        <div class="task-column__header">
+            <div class="wa-split">
+                <div>
+                    <wa-button size="small"><wa-icon library="tabler" name="arrows-down-up" label="Change sortation"></wa-icon></wa-button></div>
+                <div>
+                    <wa-button size="small"><wa-icon library="tabler" name="printer" label="Print all tasks in column"></wa-icon></wa-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="task-column task-column--empty">
+        <wa-button style="width: 100%;">Add task</wa-button>
+    </div>
+</div>
+<div id="task-card">
     <wa-card class="task-card" id="{{task_id}}">
         <div slot="header" style="width: 100%;">
             <div class="wa-split">
                 <div class="wa-cluster">
-                    <wa-button appearance="plain" variant="neutral"><wa-icon name="grip-vertical" label="Click to drag"></wa-icon></wa-button>
-                    <wa-tooltip for="my-button">This is a tooltip</wa-tooltip> <wa-button id="my-button">Hover Me</wa-button>
+                    <wa-button size="small" appearance="plain" variant="neutral"><wa-icon library="tabler" name="grip-vertical" label="Click to drag"></wa-icon></wa-button>
+                    <wa-tooltip for="my-button">Click here to select this task</wa-tooltip><wa-checkbox id="my-button" size="small"><span class="screenreader-only">Select</span></wa-checkbox>
                 </div>
                 <div>
-                    <wa-button-group label="Alignment">
-                        <wa-button><wa-icon name="caret-up" label="Move Up"></wa-icon></wa-button>
-                        <wa-button><wa-icon name="caret-down" label="Move Down"></wa-icon></wa-button>
+                    <wa-button-group label="Order">
+                        <wa-button size="small"><wa-icon library="tabler" name="chevron-up" label="Move Up"></wa-icon></wa-button>
+                        <wa-button size="small"><wa-icon library="tabler" name="chevron-down" label="Move Down"></wa-icon></wa-button>
                     </wa-button-group>
-                    <wa-button><wa-icon name="print" label="Print Single Task"></wa-icon></wa-button>
-                    <wa-dropdown>
+                    <wa-button size="small"><wa-icon library="tabler" name="printer" label="Print Single Task"></wa-icon></wa-button>
+                    <wa-dropdown size="small">
                         <wa-button slot="trigger" pill>
-                            <wa-icon label="Options" name="ellipsis"></wa-icon>
+                            <wa-icon library="tabler" label="Options" name="dots"></wa-icon>
                         </wa-button>
                         <wa-dropdown-item>
                             <wa-icon slot="icon" name="scissors"></wa-icon>
@@ -60,8 +75,8 @@
         </div>
         <div class="task-card__title">
             <div class="task-card__title__view wa-cluster">
-                <wa-checkbox size="large">Mark as done</wa-checkbox>
-                <wa-button appearance="plain" variant="neutral">Task Title</wa-button>
+                <wa-checkbox size="large"><span class="screenreader-only">Mark as done</span></wa-checkbox>
+                <wa-button size="small" appearance="plain" variant="neutral">Task Title</wa-button>
             </div>
             <div class="task-card__title__edit">
                 <div class="wa-flank:end">
@@ -78,6 +93,6 @@
                 <wa-textarea resize="auto"></wa-textarea>
             </div>
     </wa-card>
-</template>
+</div>
 </body>
 </html>

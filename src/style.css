@@ -1,0 +1,34 @@
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 500px);
+    padding: calc(var(--wa-space-l) / 2) var(--wa-space-l);
+    gap: var(--wa-space-s);
+}
+
+.task-column {
+    background-color: var(--wa-color-surface-default);
+    border-color: var(--wa-color-surface-border);
+    border-radius: var(--wa-panel-border-radius);
+    border-style: var(--wa-panel-border-style);
+    box-shadow: var(--wa-shadow-s);
+    border-width: var(--wa-panel-border-width);
+    padding: calc(var(--wa-space-l) / 2) var(--wa-space-l);
+    .task-column__header {
+    }
+}
+
+.task-card {
+    .task-card__title {
+        .task-card__title__view wa-button {
+            font-size: var(--wa-font-size-2xl);
+        }
+    }
+}
+
+.screenreader-only {
+    position: absolute !important; /* Outside the DOM flow */
+    height: 1px; width: 1px; /* Nearly collapsed */
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE 7+ only support clip without commas */
+    clip: rect(1px, 1px, 1px, 1px); /* All other browsers */
+}
