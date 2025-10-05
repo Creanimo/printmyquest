@@ -9,7 +9,16 @@
     <title>Print My Quest</title>
 </head>
 <body>
-<div class="task-grid">
+<template id="task-grid">
+    <div class="task-grid">
+    </div>
+</template>
+<template id="task-column--empty">
+    <div id="{{id}}" class="task-column task-column--empty">
+        <wa-button style="width: 100%;">Add task</wa-button>
+    </div>
+</template>
+<template id="task-column">
     <div class="task-column task-column--filled">
         <div class="task-column__header">
             <div class="wa-split">
@@ -21,11 +30,8 @@
             </div>
         </div>
     </div>
-    <div class="task-column task-column--empty">
-        <wa-button style="width: 100%;">Add task</wa-button>
-    </div>
-</div>
-<div id="task-card">
+</template>
+<template id="task-card">
     <wa-card class="task-card" id="{{task_id}}">
         <div slot="header" style="width: 100%;">
             <div class="wa-split">
@@ -81,7 +87,7 @@
             <div class="task-card__title__edit">
                 <div class="wa-flank:end">
                     <div><wa-input placeholder="Clearable" with-clear></wa-input></div>
-                    <wa-button variant="success" appearance="accent"><wa-icon name="check" label="Save"></wa-icon></wa-button>
+                    <wa-button variant="success" appearance="accent"><wa-icon library="tabler" name="check" label="Save"></wa-icon></wa-button>
                 </div>
             </div>
         </div>
@@ -93,6 +99,6 @@
                 <wa-textarea resize="auto"></wa-textarea>
             </div>
     </wa-card>
-</div>
+</template>
 </body>
 </html>

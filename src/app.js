@@ -1,4 +1,5 @@
 import "@awesome.me/webawesome/dist/components/button/button.js";
+import "@awesome.me/webawesome/dist/components/button-group/button-group.js";
 import "@awesome.me/webawesome/dist/components/dropdown/dropdown.js";
 import "@awesome.me/webawesome/dist/components/dropdown-item/dropdown-item.js";
 import "@awesome.me/webawesome/dist/components/card/card.js";
@@ -8,6 +9,7 @@ import "@awesome.me/webawesome/dist/components/textarea/textarea.js";
 import "@awesome.me/webawesome/dist/components/icon/icon.js";
 import "@awesome.me/webawesome/dist/components/tooltip/tooltip.js";
 import { registerIconLibrary } from "@awesome.me/webawesome/dist/webawesome.js";
+import {AppController} from "./controller/appController.js";
 
 registerIconLibrary('tabler', {
     resolver: name => `https://cdn.jsdelivr.net/npm/@tabler/icons@1.68.0/icons/${name}.svg`,
@@ -16,3 +18,6 @@ registerIconLibrary('tabler', {
         svg.setAttribute('stroke', 'currentColor');
     },
 });
+
+const app = new AppController();
+app.initFirstList();
